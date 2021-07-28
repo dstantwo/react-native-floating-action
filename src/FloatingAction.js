@@ -85,14 +85,14 @@ class FloatingAction extends Component {
     if (prevProps.visible !== visible) {
       if (visible) {
         Animated.parallel([
-          Animated.spring(this.visibleAnimation, { toValue: 0, useNativeDriver: false }),
-          Animated.spring(this.fadeAnimation, { toValue: 1, useNativeDriver: false })
+          Animated.spring(this.visibleAnimation, { toValue: 0, useNativeDriver: true }),
+          Animated.spring(this.fadeAnimation, { toValue: 1, useNativeDriver: true })
         ]).start();
       }
       if (!visible) {
         Animated.parallel([
-          Animated.spring(this.visibleAnimation, { toValue: 1, useNativeDriver: false }),
-          Animated.spring(this.fadeAnimation, { toValue: 0, useNativeDriver: false })
+          Animated.spring(this.visibleAnimation, { toValue: 1, useNativeDriver: true }),
+          Animated.spring(this.fadeAnimation, { toValue: 0, useNativeDriver: true })
         ]).start();
       }
     }
@@ -215,7 +215,7 @@ class FloatingAction extends Component {
     const { animated, onClose } = this.props;
 
     if (animated) {
-      Animated.spring(this.animation, { toValue: 0, useNativeDriver: false }).start();
+      Animated.spring(this.animation, { toValue: 0, useNativeDriver: true }).start();
       Animated.spring(this.actionsAnimation, { toValue: 0, useNativeDriver: false }).start();
     }
     this.updateState(
@@ -259,7 +259,7 @@ class FloatingAction extends Component {
     if (!active) {
       if (!floatingIcon) {
         if (animated) {
-          Animated.spring(this.animation, { toValue: 1, useNativeDriver: false }).start();
+          Animated.spring(this.animation, { toValue: 1, useNativeDriver: true }).start();
         }
       }
 
